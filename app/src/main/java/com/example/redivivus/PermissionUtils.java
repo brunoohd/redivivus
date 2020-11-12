@@ -1,4 +1,4 @@
-package com.example.exmapasn;
+package com.example.redivivus;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;

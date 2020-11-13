@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
     }
-
+//teste
     private void atualizaSuaLocalizacao(){
         try {
             LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);

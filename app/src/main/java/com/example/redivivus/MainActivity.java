@@ -30,7 +30,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener, ActivityCompat.OnRequestPermissionsResultCallback {
+public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLocationClickListener, GoogleMap.OnMyLocationButtonClickListener, OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener, ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static boolean LOCATION_PERMISSION_REQUEST_CODE= false;
     public GoogleMap mapa;
@@ -43,16 +43,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SupportMapFragment mapFragment = (SupportMapFragment)
-                getSupportFragmentManager().findFragmentById(R.id.nossoMapa);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.nossoMapa);
         mapFragment.getMapAsync(MainActivity.this);
-        geoDataClient = Places.getGeoDataClient(MainActivity.this, null);
-        mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        metodoBotao();
+        //exemplos da aula
+        //geoDataClient = Places.getGeoDataClient(MainActivity.this, null);
+        //mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        //metodoBotao();
         ativaPermissao();
     }
 
-    private void metodoBotao(){
+    //botão usado no exemplo da aula
+    /*private void metodoBotao(){
         btMinhaPosicao=(Button)findViewById(R.id.btnPosicao);
         btMinhaPosicao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
     }
-//teste
+    //método usado para atualizar localização com o botão usado no exemplo da aula
     private void atualizaSuaLocalizacao(){
         try {
             LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         catch (SecurityException ex){
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
     private void ativaPermissao(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -110,9 +111,21 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     @Override
+    public boolean onMyLocationButtonClick() {
+        return false;
+    }
+
+    @Override
+    public void onMyLocationClick(@NonNull Location location) {
+
+    }
+
+    @Override
     public void onMapReady(GoogleMap googleMap) {
         this.mapa = googleMap;
-        mapa.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        mapa.setMyLocationEnabled(true);
+        mapa.setOnMyLocationButtonClickListener(this);
+        mapa.setOnMyLocationClickListener(this);
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(localizacao, 18);
         mapa.animateCamera(update);
     }

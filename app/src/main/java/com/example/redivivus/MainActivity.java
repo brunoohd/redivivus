@@ -2,11 +2,12 @@ package com.example.redivivus;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+///import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.content.Context;
+//import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -28,28 +29,27 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLocationClickListener, GoogleMap.OnMyLocationButtonClickListener, OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener, ActivityCompat.OnRequestPermissionsResultCallback {
+public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLocationClickListener, GoogleMap.OnMyLocationButtonClickListener, OnMapReadyCallback, ActivityResultContract, ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static boolean LOCATION_PERMISSION_REQUEST_CODE= false;
     public GoogleMap mapa;
-    public LatLng localizacao = new LatLng(-23.951137, -46.339025);
-    private Button btMinhaPosicao;
-    private GeoDataClient geoDataClient;
-    private FusedLocationProviderClient mfusedLocationProviderClient;
+    //public LatLng localizacao = new LatLng(-23.951137, -46.339025);
+    //private Button btMinhaPosicao;
+    //private GeoDataClient geoDataClient;
+    //private FusedLocationProviderClient mfusedLocationProviderClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //ativaPermissao();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.nossoMapa);
         mapFragment.getMapAsync(MainActivity.this);
         //exemplos da aula
         //geoDataClient = Places.getGeoDataClient(MainActivity.this, null);
         //mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         //metodoBotao();
-        ativaPermissao();
     }
 
     //botão usado no exemplo da aula
@@ -99,34 +99,39 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
         }
     }*/
 
-    private void ativaPermissao(){
+    /*@Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Toast.makeText(MainActivity.this, "Falha na conexão", Toast.LENGTH_LONG).show();
+    }*/
+
+    /*private void ativaPermissao(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
             LOCATION_PERMISSION_REQUEST_CODE=PermissionUtils.validate(this, 1, Manifest.permission.ACCESS_FINE_LOCATION);
         }
-    }
+    }*/
 
     @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Toast.makeText(MainActivity.this, "Falha na conexão", Toast.LENGTH_LONG).show();
+    public void onMyLocationClick(@NonNull Location location) {
+        Toast.makeText(this, "Minha atual localização:\n" + location, Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
     public boolean onMyLocationButtonClick() {
+        Toast.makeText(this, "Minha localização atualizada", Toast.LENGTH_SHORT).show();
         return false;
     }
 
     @Override
-    public void onMyLocationClick(@NonNull Location location) {
-
-    }
-
-    @Override
     public void onMapReady(GoogleMap googleMap) {
-        this.mapa = googleMap;
+        mapa = googleMap;
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            LOCATION_PERMISSION_REQUEST_CODE=PermissionUtils.validate(this, 1, Manifest.permission.ACCESS_FINE_LOCATION);
+        }
         mapa.setMyLocationEnabled(true);
         mapa.setOnMyLocationButtonClickListener(this);
         mapa.setOnMyLocationClickListener(this);
-        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(localizacao, 18);
-        mapa.animateCamera(update);
+        //CameraUpdate update = CameraUpdateFactory.newLatLngZoom(localizacao, 18);
+        //mapa.animateCamera(update);
     }
 }

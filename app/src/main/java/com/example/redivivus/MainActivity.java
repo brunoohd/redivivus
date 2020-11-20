@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
         //exemplos da aula
         //geoDataClient = Places.getGeoDataClient(MainActivity.this, null);
         //mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        //metodoBotao();hghg
+        //metodoBotao();
     }
 
     //botão usado no exemplo da aula

@@ -3,7 +3,6 @@
     package="com.example.redivivus">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <uses-library android:name="org.apache.http.legacy" android:required="false" /> <!--linha que foi preciso acescentar por não estar funcionando ao rodar a aplicação apenas com as linhas da aula-->
+        <activity android:name=".MapaActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

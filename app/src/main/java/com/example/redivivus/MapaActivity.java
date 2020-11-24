@@ -1,24 +1,12 @@
 package com.example.redivivus;
 
+import android.location.Location;
+import android.os.Bundle;
+import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
-
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.os.Bundle;
-import android.service.carrier.CarrierMessagingService;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.places.GeoDataClient;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -26,62 +14,26 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MainActivity extends AppCompatActivity {
-        //implements
-        //GoogleMap.OnMyLocationButtonClickListener,
-        //GoogleMap.OnMyLocationClickListener,
-        //OnMapReadyCallback,
-        //ActivityCompat.OnRequestPermissionsResultCallback {
+public class MapaActivity extends AppCompatActivity  implements
+        GoogleMap.OnMyLocationButtonClickListener,
+        GoogleMap.OnMyLocationClickListener,
+        OnMapReadyCallback,
+        ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static boolean LOCATION_PERMISSION_REQUEST_CODE = false;
-    //public GoogleMap mapa;
-    //public LatLng localizacao = new LatLng(-23.951137, -46.339025);
-    private Button btPermitirLocalizacao, btMapa;
+    public GoogleMap mapa;
+    public LatLng localizacao = new LatLng(-23.951137, -46.339025);
+    private Button btPermitirLocalizacao;
     //private GeoDataClient geoDataClient;
     //private FusedLocationProviderClient mfusedLocationProviderClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        checarPermissao();
-    }
-
-
-    public void checarPermissao(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            Intent tela = new Intent(MainActivity.this, MapaActivity.class);
-            startActivity(tela);
-        } else {
-            setContentView(R.layout.tela_inicial_permissao);
-            btPermitirLocalizacao = (Button)findViewById(R.id.btnPermitirLocalizacao);
-            btPermitirLocalizacao.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ativaPermissao();
-                }
-            });
-            btMapa=(Button)findViewById(R.id.btnMapa);
-            btMapa.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent tela = new Intent(MainActivity.this, MapaActivity.class);
-                    startActivity(tela);
-                }
-            });
-        }
-    }
-
-    public void ativaPermissao(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            LOCATION_PERMISSION_REQUEST_CODE = PermissionUtils.validate(this, 1, Manifest.permission.ACCESS_FINE_LOCATION);
-        }
-    }
-}
-/*
+        setContentView(R.layout.mapa_main);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.nossoMapa);
-        mapFragment.getMapAsync(MainActivity.this);
+        mapFragment.getMapAsync(MapaActivity.this);
         //exemplos da aula
         //geoDataClient = Places.getGeoDataClient(MainActivity.this, null);
         //mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -106,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     }*/
 
-   /* @Override
+    @Override
     public boolean onMyLocationButtonClick() {
         return false;
     }
@@ -162,3 +114,4 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }*/
+}

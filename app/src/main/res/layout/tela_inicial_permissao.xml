@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="209dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Será necessário ter acesso a sua localização para o aplicativo funcionar"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/btnPermitirLocalizacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Permitir acesso à localização" />
+
+    <Button
+        android:id="@+id/btnMapa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ir para o mapa" />
+</LinearLayout>

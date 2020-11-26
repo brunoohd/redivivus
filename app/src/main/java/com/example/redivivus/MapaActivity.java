@@ -13,7 +13,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapaActivity extends AppCompatActivity  implements
         GoogleMap.OnMyLocationButtonClickListener,
@@ -23,7 +26,7 @@ public class MapaActivity extends AppCompatActivity  implements
 
     private static boolean LOCATION_PERMISSION_REQUEST_CODE = false;
     public GoogleMap mapa;
-    public LatLng localizacao = new LatLng(-23.951137, -46.339025);
+    public LatLng localizacao = new LatLng(-23.5914954, -48.0649624);
     private Button btPermitirLocalizacao;
     //private GeoDataClient geoDataClient;
     //private FusedLocationProviderClient mfusedLocationProviderClient;
@@ -47,9 +50,20 @@ public class MapaActivity extends AppCompatActivity  implements
         mapa.setMyLocationEnabled(true);
         mapa.setOnMyLocationButtonClickListener(this);
         mapa.setOnMyLocationClickListener(this);
-        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(localizacao, 18);
+        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(localizacao, 11);
         mapa.animateCamera(update);
+        pontosDescarte();
     }
+
+    private void pontosDescarte(){
+        //private static final Rai
+
+        mapa.addMarker(new MarkerOptions().position(new LatLng(-23.5670508, -48.0273684)).title("Ecoponto").snippet("Descarte de entulhos, resto de construção, movéis velhos"));
+        mapa.addMarker(new MarkerOptions().position(new LatLng(-23.5684936,-48.0304146)).title("Cooperita - Coop. de Reciclagem de Itapetininga").snippet("Descarte de recicláveis").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+        mapa.addMarker(new MarkerOptions().position(new LatLng(-23.5858486,-48.0480597)).title("Drogaria Raia").snippet("Descarte de medicamentos").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+    }
+
+
 
     /*private void ativaPermissao(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){

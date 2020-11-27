@@ -81,7 +81,7 @@ public class MapaActivity extends AppCompatActivity  implements
 
     @Override
     public boolean onMyLocationButtonClick() {
-        Toast.makeText(this, "Você está aqui", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Você está aqui!", Toast.LENGTH_LONG).show();
         return false;
     }
 

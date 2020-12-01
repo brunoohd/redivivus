@@ -9,8 +9,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <uses-library android:name="org.apache.http.legacy" android:required="false" /> <!--linha que foi preciso acescentar por não estar funcionando ao rodar a aplicação apenas com as linhas da aula-->
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"> <!--Esconder barra de título do APP-->
+        <uses-library android:name="org.apache.http.legacy" android:required="false" /> <!--Linha que foi preciso acescentar por não estar funcionando ao rodar a aplicação apenas com as linhas da aula-->
         <activity android:name=".MapaActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>

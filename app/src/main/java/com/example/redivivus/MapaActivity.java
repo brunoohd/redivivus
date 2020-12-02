@@ -80,7 +80,7 @@ public class MapaActivity extends AppCompatActivity  implements
         mapa.addMarker(new MarkerOptions()
                 .position(EXTRA)
                 .title("EXTRA")
-                .snippet("Descarte de lâmpadas fluorescente")
+                .snippet("Descarte de lâmpadas fluorescentes")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
 
         //Marcador do ponto de descarte Hospital Unimed

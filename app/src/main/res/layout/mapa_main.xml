@@ -36,11 +36,13 @@
 
             <!--Legenda Marcador Recicláveis-->
             <TableRow>
+
                 <ImageView
                     android:id="@+id/imageView1"
                     android:layout_width="18dp"
                     android:layout_height="match_parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    app:srcCompat="@drawable/green"
+                    tools:srcCompat="@drawable/green" />
 
                 <TextView
                     android:layout_width="48dp"
@@ -51,11 +53,13 @@
 
             <!--Legenda Marcador Medicamentos-->
             <TableRow>
+
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="27dp"
                     android:layout_height="match_parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    app:srcCompat="@drawable/azure"
+                    tools:srcCompat="@drawable/azure" />
 
                 <TextView
                     android:layout_width="10dp"
@@ -66,61 +70,35 @@
 
             <!--Legenda Marcador Entulhos-->
             <TableRow>
+
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="18dp"
                     android:layout_height="match_parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    app:srcCompat="@drawable/red"
+                    tools:srcCompat="@drawable/red" />
 
                 <TextView
                     android:layout_width="48dp"
                     android:layout_column="1"
-                    android:text="Entulhos">
+                    android:text="Entulhos, restos de construções, movéis velhos">
                 </TextView>
             </TableRow>
 
-            <!--Legenda Marcador Teste 1-->
+            <!--Legenda Marcador componentes eletrônicos-->
             <TableRow>
+
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="27dp"
                     android:layout_height="match_parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    app:srcCompat="@drawable/yellow"
+                    tools:srcCompat="@drawable/yellow" />
 
                 <TextView
                     android:layout_width="10dp"
                     android:layout_column="1"
-                    android:text="Teste">
-                </TextView>
-            </TableRow>
-
-            <!--Legenda Marcador Teste 2-->
-            <TableRow android:layout_width="match_parent">
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="18dp"
-                    android:layout_height="match_parent"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:layout_width="48dp"
-                    android:layout_column="1"
-                    android:text="Recicláveis">
-                </TextView>
-            </TableRow>
-
-            <!--Legenda Marcador Teste 3-->
-            <TableRow>
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="27dp"
-                    android:layout_height="match_parent"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:layout_width="10dp"
-                    android:layout_column="1"
-                    android:text="Teste">
+                    android:text="Componentes eletrônicos">
                 </TextView>
             </TableRow>
 

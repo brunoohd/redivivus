@@ -11,14 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"> <!--Esconder barra de título do APP-->
         <uses-library android:name="org.apache.http.legacy" android:required="false" /> <!--Linha que foi preciso acescentar por não estar funcionando ao rodar a aplicação apenas com as linhas da aula-->
-        <activity android:name=".MapaActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MapaActivity"></activity>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>

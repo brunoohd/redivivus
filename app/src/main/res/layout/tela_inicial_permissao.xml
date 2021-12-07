@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#0B0A0A"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView3"
@@ -15,15 +15,19 @@
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="A localização do dispositivo precisa estar ligada e será necessário permitir acesso a ela para o aplicativo funcionar"
-        android:gravity="center"/>
+        android:background="#FAF3F3"
+        android:gravity="center"
+        android:text="A localização do dispositivo precisa estar ligada e será necessário permitir acesso à ela para o aplicativo funcionar"
+        android:textColor="#E40A0A" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Será necessário ter conexão com a internet parar o aplicativo carregar as informações"
-        android:gravity="center"/>
+        android:background="#FAFAFA"
+        android:gravity="center"
+        android:text="Será necessário ter conexão com a internet para o aplicativo carregar as informações"
+        android:textColor="#E40A0A" />
 
     <Button
         android:id="@+id/btnPermitirLocalizacao"

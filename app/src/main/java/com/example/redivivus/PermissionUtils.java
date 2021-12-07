@@ -21,7 +21,7 @@ public class PermissionUtils {
                     PackageManager.PERMISSION_GRANTED;
             if (! ok ) {
                 list.add(permission);
-                Toast.makeText(activity, "Permissao adicionada", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(activity, "Permissao adicionada", Toast.LENGTH_SHORT).show();
             }
         }
         if (list.isEmpty()) {
